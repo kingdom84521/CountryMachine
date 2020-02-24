@@ -1,6 +1,6 @@
 const discord = require("discord.js")
 const logHelper = require("./tools/logHelper")
-const { Handler } = require("./classes/handler")
+const messageHandler = require("./handlers/messageHandler")
 
 const bot = new discord.Client()
 
@@ -9,7 +9,8 @@ bot.on( "ready", () => {
 } )
 
 bot.on( "message", message => {
-    
+    console.log( "[ MESSAGE INCOMING ]" )
+    messageHandler.emit( message )
 } )
 
-bot.login( "" )
+bot.login( "NjYxODE1MzczMTc1NDU1NzQ0.XlNArg.d36CMo9WFQGBDSYqpYGYIMLcS9o" )

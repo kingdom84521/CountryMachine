@@ -3,15 +3,11 @@ class Handler {
         this.features = []
     }
 
-    get features() {
-        return this.features
-    }
-
-    static subscribe( feature ) {
+    subscribe( feature ) {
         this.features.push( feature )
     }
 
-    static unsubscribe( feature ) {
+    unsubscribe( feature ) {
         for ( index in this.features )
         {
             if ( feature === this.features[ index ] )
@@ -22,7 +18,13 @@ class Handler {
         }
     }
 
-    static fire( data ) {
+    preprocess( data ) {
+        return data
+    }
+
+    emit( data ) {
+        data = this.preprocess( data )
+
         for ( element of this.features )
         {
             element.notify( data )
